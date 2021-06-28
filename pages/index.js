@@ -1,15 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 const Home = (props) => {
 	const router = useRouter();
 
 	const handleClick = (e) => {
 		e.preventDefault();
+		const name = document.getElementById("pokemon-name").value;
 
-		router.push("/pokemon");
+		router.push(`/pokemon/${name}`);
 	};
+
 	return (
 		<>
 			<Head>
@@ -25,6 +28,7 @@ const Home = (props) => {
 				<a>Go to Blog!</a>
 			</Link>
 			<br />
+			<input id='pokemon-name' type='text' placeholder='ex: Pikachu' />
 			<button onClick={(e) => handleClick(e)}>
 				Click me to programatically go to Pokemon!
 			</button>
